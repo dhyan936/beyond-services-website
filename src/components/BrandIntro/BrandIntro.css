@@ -38,7 +38,7 @@
   position: absolute;
   width: calc(clamp(9.5rem, 6rem + 11vw, 15rem) + 3rem);
   aspect-ratio: 2.2;
-  background: radial-gradient(closest-side, var(--ink) 62%, rgb(10 12 14 / 0));
+  background: radial-gradient(closest-side, var(--ink) 62%, rgb(14 13 11 / 0));
   opacity: 0;
 }
 

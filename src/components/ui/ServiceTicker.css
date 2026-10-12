@@ -1,0 +1,61 @@
+.ticker {
+  display: flex;
+  overflow: hidden;
+  padding-block: clamp(1.25rem, 0.8rem + 1.6vw, 2.25rem);
+  border-block: 1px solid rgb(212 175 90 / 0.22);
+  background: var(--bs-ink);
+  user-select: none;
+}
+
+.ticker__track {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  animation: ticker-slide 46s linear infinite;
+  will-change: transform;
+}
+
+.ticker:hover .ticker__track {
+  animation-play-state: paused;
+}
+
+.ticker__item {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  padding-right: clamp(1.5rem, 1rem + 2vw, 3rem);
+  font-family: var(--font-impact);
+  font-size: clamp(2.75rem, 1.6rem + 4.4vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--bs-ivory);
+}
+
+/* Every other line is drawn in gold outline, so the band reads as a rhythm. */
+.ticker__item--outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--bs-gold-light);
+}
+
+/* A small gold diamond between lines. */
+.ticker__mark {
+  flex: none;
+  width: 0.16em;
+  height: 0.16em;
+  background: var(--bs-gold);
+  transform: rotate(45deg);
+}
+
+@keyframes ticker-slide {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track {
+    animation: none;
+  }
+}

@@ -23,7 +23,7 @@
 .careers__figure {
   overflow: hidden;
   border-radius: var(--radius);
-  background: rgb(10 11 12 / 0.04);
+  background: rgb(14 13 11 / 0.04);
 }
 
 .careers__image {
@@ -42,10 +42,11 @@
 .careers__subheading {
   max-width: 22ch;
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  font-size: var(--fs-md);
   font-weight: var(--fw-semibold);
   line-height: 1.22;
-  letter-spacing: -0.012em;
+  letter-spacing: 0.01em;
   color: var(--color-fg-on-light);
 }
 

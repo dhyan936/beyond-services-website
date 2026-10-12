@@ -24,7 +24,7 @@ export default function ProjectsSection() {
   const { items } = PROJECTS
 
   return (
-    <section className="section projects" aria-labelledby="projects-heading">
+    <section className="section projects tone-dark" aria-labelledby="projects-heading">
       <div className="container">
         <SectionIntro
           id="projects-heading"

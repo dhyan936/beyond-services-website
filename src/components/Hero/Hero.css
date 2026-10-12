@@ -77,10 +77,10 @@
 .hero-scene__scrim {
   background: linear-gradient(
     0deg,
-    rgb(10 12 14 / 0.92) 0%,
-    rgb(10 12 14 / 0.74) 42%,
-    rgb(10 12 14 / 0.42) 66%,
-    rgb(10 12 14 / 0.12) 88%
+    rgb(14 13 11 / 0.92) 0%,
+    rgb(14 13 11 / 0.74) 42%,
+    rgb(14 13 11 / 0.42) 66%,
+    rgb(14 13 11 / 0.12) 88%
   );
 }
 
@@ -89,7 +89,7 @@
   inset: 0 0 auto;
   z-index: 1;
   height: 10rem;
-  background: linear-gradient(180deg, rgb(10 12 14 / 0.62), rgb(10 12 14 / 0));
+  background: linear-gradient(180deg, rgb(14 13 11 / 0.62), rgb(14 13 11 / 0));
   pointer-events: none;
 }
 
@@ -143,24 +143,36 @@
 
 /* LEVEL 2 — small: eyebrow */
 .hero__eyebrow {
-  font-size: var(--fs-xs);
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-muted);
+  letter-spacing: 0.28em;
+  color: var(--bs-gold-light);
+}
+
+.hero__eyebrow::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
 }
 
 /* LEVEL 1 — display: the headline, set in the editorial serif */
 .hero__headline {
-  max-width: 16ch;
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-size: var(--fs-lg);
-  font-weight: 540;
-  line-height: 1;
-  letter-spacing: -0.014em;
+  max-width: 17ch;
+  font-family: var(--font-impact);
+  /* Width-led, but capped by height so three lines plus the copy always fit. */
+  font-size: min(var(--fs-display), 15.5vh);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
   color: var(--color-fg-strong);
-  text-shadow: 0 2px 30px rgb(11 11 11 / 0.35);
+  text-shadow: 0 2px 30px rgb(14 13 11 / 0.35);
 }
 
 .hero__line-mask {
@@ -181,8 +193,8 @@
   font-size: var(--fs-sm);
   font-weight: 400;
   line-height: 1.62;
-  color: rgb(241 239 234 / 0.85);
-  text-shadow: 0 1px 16px rgb(10 12 14 / 0.4);
+  color: rgb(250 248 243 / 0.85);
+  text-shadow: 0 1px 16px rgb(14 13 11 / 0.4);
 }
 
 /* Metrics — editorial, not dashboard cards (LEVEL 2 small). */
@@ -201,15 +213,17 @@
 }
 
 .hero__metric-value {
-  font-size: var(--fs-sm);
-  font-weight: 600;
+  font-family: var(--font-impact);
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  line-height: 0.95;
   letter-spacing: 0.02em;
-  color: var(--color-fg-strong);
+  color: var(--bs-gold-light);
 }
 
 .hero__metric-label {
+  font-family: var(--font-display);
   font-size: var(--fs-xs);
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--color-subtle);
@@ -224,8 +238,9 @@
 }
 
 .hero__index-item {
-  font-size: var(--fs-xs);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--color-mist);
@@ -297,11 +312,11 @@
   width: 100%;
   height: 2px;
   overflow: hidden;
-  background: rgb(241 239 234 / 0.24);
+  background: rgb(250 248 243 / 0.24);
 }
 
 .hero__scene-button[aria-current] .hero__track {
-  background: rgb(241 239 234 / 0.34);
+  background: rgb(250 248 243 / 0.34);
 }
 
 .hero__fill {
@@ -384,7 +399,7 @@
     width: 1px;
     height: 2rem;
     overflow: hidden;
-    background: rgb(241 239 234 / 0.2);
+    background: rgb(250 248 243 / 0.2);
   }
 
   .hero__scroll-line::after {
@@ -412,12 +427,12 @@
     background:
       linear-gradient(
         90deg,
-        rgb(10 12 14 / 0.8) 0%,
-        rgb(10 12 14 / 0.54) 34%,
-        rgb(10 12 14 / 0.14) 62%,
-        rgb(10 12 14 / 0) 80%
+        rgb(14 13 11 / 0.8) 0%,
+        rgb(14 13 11 / 0.54) 34%,
+        rgb(14 13 11 / 0.14) 62%,
+        rgb(14 13 11 / 0) 80%
       ),
-      linear-gradient(0deg, rgb(10 12 14 / 0.72) 0%, rgb(10 12 14 / 0.16) 32%, rgb(10 12 14 / 0) 55%);
+      linear-gradient(0deg, rgb(14 13 11 / 0.72) 0%, rgb(14 13 11 / 0.16) 32%, rgb(14 13 11 / 0) 55%);
   }
 
   /* The portrait film (scene 02) becomes the right half of a split frame instead
@@ -432,8 +447,8 @@
   }
 
   .hero-scene--split .hero-scene__scrim {
-    background: linear-gradient(90deg, rgb(10 12 14 / 0.4) 0%, rgb(10 12 14 / 0) 40%),
-      linear-gradient(0deg, rgb(10 12 14 / 0.6) 0%, rgb(10 12 14 / 0) 28%);
+    background: linear-gradient(90deg, rgb(14 13 11 / 0.4) 0%, rgb(14 13 11 / 0) 40%),
+      linear-gradient(0deg, rgb(14 13 11 / 0.6) 0%, rgb(14 13 11 / 0) 28%);
   }
 
   .hero[data-layout='split'] .hero__scene-copy {
@@ -449,5 +464,32 @@
   .hero__scroll-line::after {
     animation: none;
     transform: none;
+  }
+}
+
+/* ---- Desktop display scale -----------------------------------------------
+   Each heading line is authored as one line, so on wide screens it stays one
+   line: the size is the smallest of the display scale, a share of the
+   viewport height, and a share of its width. Phones keep natural wrapping. */
+@media (min-width: 900px) {
+  .hero__body {
+    padding-top: calc(var(--header-h) + 2.25rem + 1rem);
+  }
+
+  .hero__scene-copy {
+    max-width: min(76rem, 100%);
+  }
+
+  .hero__headline {
+    max-width: none;
+    font-size: min(var(--fs-display), 15vh, 8.4vw);
+  }
+
+  .hero__line {
+    white-space: nowrap;
+  }
+
+  .hero__desc {
+    max-width: 40rem;
   }
 }

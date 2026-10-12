@@ -21,7 +21,7 @@ import './ServicesSection.css'
  */
 export default function ServicesSection() {
   return (
-    <section id="services" className="section services" aria-labelledby="services-title">
+    <section id="services" className="section services tone-dark" aria-labelledby="services-title">
       <div className="container">
         <SectionIntro
           id="services-title"

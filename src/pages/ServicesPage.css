@@ -52,10 +52,11 @@
 
 .services-page__cta-heading {
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-size: var(--fs-h2);
-  font-weight: 450;
+  font-weight: 500;
   line-height: 1.1;
-  letter-spacing: -0.018em;
+  letter-spacing: 0.01em;
   color: var(--color-fg-strong);
   text-wrap: balance;
 }

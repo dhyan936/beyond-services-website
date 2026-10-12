@@ -149,11 +149,11 @@ select.quote__input {
 }
 
 .quote__message--error {
-  border-color: rgb(185 154 99 / 0.55);
+  border-color: rgb(184 151 58 / 0.55);
 }
 
 .quote__message--ok {
-  border-color: rgb(208 179 123 / 0.55);
+  border-color: rgb(212 175 90 / 0.55);
   color: var(--color-fg);
 }
 
@@ -161,7 +161,7 @@ select.quote__input {
   display: grid;
   justify-items: start;
   gap: var(--space-4);
-  border-color: rgb(208 179 123 / 0.55);
+  border-color: rgb(212 175 90 / 0.55);
   color: var(--color-fg);
 }
 

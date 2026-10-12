@@ -1,7 +1,7 @@
 /* Projects / Case Studies — four tiles, deliberately unequal. */
 
 .projects {
-  background: var(--bs-white);
+  background: var(--bs-ink-800);
 }
 
 .projects__grid {
@@ -55,7 +55,7 @@
 
 .project-tile:hover,
 .project-tile:focus-visible {
-  border-color: rgb(208 179 123 / 0.42);
+  border-color: rgb(212 175 90 / 0.42);
   background: var(--color-surface-raised);
 }
 
@@ -78,10 +78,10 @@
   inset: 0;
   background: linear-gradient(
     0deg,
-    rgb(23 25 26 / 0.96) 0%,
-    rgb(23 25 26 / 0.8) 34%,
-    rgb(23 25 26 / 0.18) 72%,
-    rgb(23 25 26 / 0) 100%
+    rgb(26 24 21 / 0.96) 0%,
+    rgb(26 24 21 / 0.8) 34%,
+    rgb(26 24 21 / 0.18) 72%,
+    rgb(26 24 21 / 0) 100%
   );
 }
 
@@ -103,10 +103,11 @@
 
 .project-tile__title {
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  font-size: var(--fs-md);
   font-weight: var(--fw-semibold);
   line-height: 1.14;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   color: var(--color-fg-strong);
   text-wrap: balance;
   transition: transform var(--dur-base) var(--ease-out);

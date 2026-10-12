@@ -14,7 +14,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 60%;
-  background: linear-gradient(180deg, var(--color-surface) 0%, rgb(23 25 26 / 0) 100%);
+  background: linear-gradient(180deg, var(--color-surface) 0%, rgb(26 24 21 / 0) 100%);
   pointer-events: none;
 }
 
@@ -41,11 +41,12 @@
 }
 
 .page-hero__heading {
-  font-family: var(--font-display);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  font-family: var(--font-impact);
+  font-size: var(--fs-title);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
   color: var(--color-fg-strong);
   text-wrap: balance;
 }
@@ -67,17 +68,4 @@
   .page-hero {
     padding-top: calc(var(--header-h) + var(--space-7));
   }
-}
-
-/* The display face changed, so its heading weight did too; these hold the
-   protected Service pages at the weight they were signed off with. */
-
-html[data-legacy-theme] .page-hero__heading {
-  font-weight: 450;
-}
-
-/* Size tokens for the protected Service pages (see tokens.css). */
-
-html[data-legacy-theme] .page-hero__heading {
-  font-size: var(--fs-h1);
 }

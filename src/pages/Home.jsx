@@ -4,6 +4,7 @@ import Header from '../components/Header/Header'
 import Hero from '../components/Hero/Hero'
 import Footer from '../components/layout/Footer'
 import IvoryPanel from '../components/layout/IvoryPanel'
+import ServiceTicker from '../components/ui/ServiceTicker'
 import ExpertiseSection from '../sections/Expertise/ExpertiseSection'
 import AboutSection from '../sections/About/AboutSection'
 import BusinessApproachSection from '../sections/BusinessApproach/BusinessApproachSection'
@@ -84,6 +85,7 @@ export default function Home() {
 
       <main id="main" tabIndex={-1}>
         <Hero started={revealed} />
+        <ServiceTicker />
 
         {/* 1 */}
         <ExpertiseSection />

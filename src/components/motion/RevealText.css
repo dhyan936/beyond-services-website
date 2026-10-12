@@ -13,11 +13,10 @@
   will-change: transform;
 }
 
-/* Editorial emphasis: the display face's own italic, slightly lighter. */
+/* Emphasis: the same caps, lighter, in brand gold. */
 .reveal-lines__line.is-emphasis {
-  font-style: italic;
-  font-weight: 380;
-  letter-spacing: -0.01em;
+  font-weight: 300;
+  color: var(--color-accent);
 }
 
 .reveal-label {

@@ -123,6 +123,7 @@
 
 .contact-page__hours-heading {
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
   line-height: var(--lh-heading);

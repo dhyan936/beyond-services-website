@@ -64,10 +64,11 @@
 
 .sigblock__heading {
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
   line-height: 1.16;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   color: var(--color-fg-on-light);
 }
 
@@ -87,7 +88,8 @@
 
 .sigblock__person {
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  font-size: var(--fs-md);
   font-weight: 500;
   color: var(--color-fg-on-light);
 }

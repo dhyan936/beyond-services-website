@@ -1,89 +1,69 @@
 /*
- * Beyond Service design tokens — reconstructed from the original site.
+ * Beyond Service design tokens — v2, "Ink & Gold".
  *
- * Every colour and dimension below was read from
- * https://www.beyondservice.co.in/ with a real browser, from computed styles
- * and from the font files the page actually requests. Nothing here is a
- * guess; where the original is itself inconsistent (its H2 renders at 54,
- * 57.6 and 60px) this file picks one value and says so.
+ * The palette is the live brand, read from the production stylesheet at
+ * https://www.beyondservice.co.in/ (its --bs-* custom properties): ink
+ * #0E0D0B, ivory #FAF8F3, cream #F3EFE6, gold #B8973A / #D4AF5A / #E8D89A and
+ * the warm ink greys #2E2C28 / #6B6760. Nothing is invented; two values are
+ * derived, and each says why.
  *
- * TYPOGRAPHY IS THREE SIZES: --fs-lg, --fs-sm, --fs-xs, and nothing else.
- * Hierarchy is carried by family, weight, line-height, letter-spacing and
- * colour. If a component seems to need a fourth size, the component is wrong.
+ * Type is three families with three jobs:
+ *   Bebas Neue — impact: hero headlines, page titles, big numerals.
+ *   Oswald     — structure: section and card headings, labels, buttons, nav.
+ *   Poppins    — reading: body copy, form fields, captions.
  */
 :root {
   /* ---------------------------------------------------------------------
-     Palette — the nine approved Charcoal + Champagne values from the Beyond
-     Service Design System (docs/design-system/project/tokens.json):
-
-       #0A0B0C  #17191A  #292C2E  #62676A  #AEB3B5  #F3F4F3  #FFFFFF
-       #B99A63  #D0B37B
-
-     Champagne is a restrained accent, never a dominant ground: it appears on
-     rules, eyebrows, focus rings, icon marks and the primary button, and on
-     no full-width surface.
-
-     One derived value exists, and only one. See --champagne-ink below.
+     Palette — live brand values.
      --------------------------------------------------------------------- */
-  --bs-ink: #0a0b0c; /* ink-900 — page ink, dark sections, footer */
-  --bs-ink-800: #17191a; /* ink-800 — charcoal surface */
-  --bs-ink-soft: #292c2e; /* ink-700 — raised dark surface, body copy on light */
-  --bs-ink-500: #62676a; /* ink-500 — muted text, meta */
-  --bs-ink-300: #aeb3b5; /* ink-300 — dividers, secondary text on dark */
-  --bs-cream: #f3f4f3; /* ink-100 — the cream canvas */
-  --bs-white: #ffffff; /* ink-000 — raised surface on cream */
-  --bs-gold: #b99a63; /* champagne-500 — accent on cream */
-  --bs-gold-light: #d0b37b; /* champagne-300 — accent on charcoal */
+  --bs-ink: #0e0d0b; /* page ink, dark sections, footer */
+  --bs-ink-800: #1a1815; /* raised dark surface (derived: ink lifted one step) */
+  --bs-ink-soft: #2e2c28; /* ink-mid — body copy on light, card ground on dark */
+  --bs-ink-500: #6b6760; /* ink-soft — muted text on light, 5.3:1 on ivory */
+  --bs-ink-300: #a29c91; /* secondary text on dark, 7.1:1 on ink */
+  --bs-ivory: #faf8f3; /* the light canvas */
+  --bs-cream: #f3efe6; /* the alternate light band */
+  --bs-white: #ffffff;
+  --bs-gold: #b8973a; /* brand gold — fills, rules, primary button */
+  --bs-gold-light: #d4af5a; /* gold on ink — accent text, 9.3:1 */
+  --bs-gold-pale: #e8d89a; /* highlights, hover glints */
+  --bs-navy: #1c2539; /* the live site's secondary dark */
 
-  /* The alternating light band. The approved set holds exactly two light
-     values, so the rhythm runs cream -> white rather than cream -> deeper
-     cream. */
-  --bs-cream-deep: var(--bs-white);
+  /* Derived: brand gold is 2.6:1 on ivory — fine for rules and fills, not for
+     12px eyebrows. This is the same hue darkened to 5.7:1 and is used only
+     for accent TEXT on light grounds. */
+  --champagne-ink: #7a5f1c;
 
-  /* The single derived value in the system.
-
-     champagne-500 on the cream canvas is 2.4:1 — fine for a rule or an icon,
-     far below the 4.5:1 that small text needs, and eyebrows are small text.
-     This is champagne darkened until it clears 4.5:1 (it measures ~5.0:1),
-     and it is used for accent TEXT on light grounds only. It is never a fill,
-     and on dark grounds champagne-300 is used instead at ~9.8:1. */
-  --champagne-ink: #7e6536;
-
-  /* Kept so existing component CSS resolves; both now point at approved
-     values rather than the previous warm set. */
-  --bs-gold-pale: var(--bs-gold-light);
+  --bs-cream-deep: var(--bs-cream);
   --bs-body: var(--bs-ink-soft);
   --bs-steel: var(--bs-ink-500);
 
   /* ---------------------------------------------------------------------
-     Semantic colour. The default context is LIGHT — the Design System names
-     cream the primary theme and charcoal the alternate. Dark sections opt in
-     with `.tone-dark`, which re-maps this same set.
+     Semantic colour. The default context is LIGHT (ivory). Dark sections opt
+     in with `.tone-dark`, which re-maps this same set.
      --------------------------------------------------------------------- */
-  --color-bg: var(--bs-white);
+  --color-bg: var(--bs-ivory);
   --color-fg: var(--bs-ink);
   --color-fg-strong: var(--bs-ink);
-  --color-muted: var(--bs-ink-soft); /* text-secondary, 12.6:1 on cream */
-  --color-subtle: var(--bs-ink-500); /* text-muted, 5.2:1 on cream */
-  --color-border: rgb(23 25 26 / 0.1); /* border-subtle */
-  --color-border-strong: rgb(23 25 26 / 0.4); /* border-strong */
+  --color-muted: var(--bs-ink-soft);
+  --color-subtle: var(--bs-ink-500);
+  --color-border: rgb(14 13 11 / 0.1);
+  --color-border-strong: rgb(14 13 11 / 0.4);
   --color-surface: var(--bs-cream);
   --color-surface-raised: var(--bs-white);
-  --color-overlay: rgb(10 11 12 / 0.7);
-  --color-accent: var(--champagne-ink); /* accent TEXT on light */
-  --color-accent-strong: var(--bs-ink); /* primary-button hover ground */
+  --color-overlay: rgb(14 13 11 / 0.7);
+  --color-accent: var(--champagne-ink);
+  --color-accent-strong: var(--bs-ink);
   --color-accent-2: var(--bs-gold);
-  --color-rule: var(--bs-gold); /* champagne for rules, marks and fills */
-  --color-hover: rgb(23 25 26 / 0.05);
-  --color-active: rgb(23 25 26 / 0.09);
+  --color-rule: var(--bs-gold);
+  --color-hover: rgb(14 13 11 / 0.05);
+  --color-active: rgb(14 13 11 / 0.09);
   --color-focus: var(--bs-gold);
 
-  /* The "on light" aliases keep their original meaning, so every component
-     already written against them stays correct. */
-  --color-bg-light: var(--bs-cream);
+  --color-bg-light: var(--bs-ivory);
   --color-fg-on-light: var(--bs-ink);
   --color-muted-on-light: var(--bs-ink-soft);
-  --color-border-on-light: rgb(23 25 26 / 0.2); /* border-default */
+  --color-border-on-light: rgb(14 13 11 / 0.2);
 
   /* Legacy aliases still referenced by component CSS. */
   --black: var(--bs-ink);
@@ -91,7 +71,7 @@
   --charcoal: var(--bs-ink-soft);
   --steel: var(--bs-ink-500);
   --silver: var(--bs-ink-300);
-  --soft-white: var(--bs-cream);
+  --soft-white: var(--bs-ivory);
   --white: var(--bs-white);
   --champagne: var(--bs-gold);
   --champagne-light: var(--bs-gold-light);
@@ -100,53 +80,61 @@
   --charcoal-800: var(--bs-ink-soft);
   --mist: var(--bs-ink-300);
   --cream: var(--bs-cream);
-  --ivory: var(--bs-cream);
+  --ivory: var(--bs-ivory);
   --gold-400: var(--bs-gold-light);
   --gold-500: var(--bs-gold);
-  --gold-700: var(--champagne-ink); /* accent text on light, as before */
+  --gold-700: var(--champagne-ink);
   --steel-light: var(--bs-ink-500);
 
   /* ---------------------------------------------------------------------
-     Typography — exactly two families, exactly three sizes.
+     Typography
      --------------------------------------------------------------------- */
-  --font-display: 'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-sans: 'DM Sans Variable', 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-impact: 'Bebas Neue', 'Oswald Variable', Impact, 'Arial Narrow', sans-serif;
+  --font-display: 'Oswald Variable', 'Oswald', 'Arial Narrow', sans-serif;
+  --font-sans: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
-  /* LARGE — the hero headline and every section heading, one size for both.
-     The original's H1 is 76px and its H2 cluster is 54-60px; 54px is the
-     single value chosen so no section heading is ever larger than another. */
-  --fs-lg: clamp(2.25rem, 1.35rem + 3.1vw, 3.375rem); /* 36 -> 54px */
-
-  /* SMALL — body, navigation, subsection headings, card and team headings,
-     form fields. The original's body text is 16px. */
+  /* DISPLAY — hero headline, Bebas Neue. Condensed caps carry real scale. */
+  --fs-display: clamp(3.5rem, 1.6rem + 7.6vw, 9.25rem); /* 56 -> 148px */
+  /* TITLE — inner-page hero titles, Bebas Neue. */
+  --fs-title: clamp(3rem, 1.7rem + 5.4vw, 7rem); /* 48 -> 112px */
+  /* LARGE — section headings, Oswald caps. */
+  --fs-lg: clamp(2.125rem, 1.35rem + 3vw, 3.75rem); /* 34 -> 60px */
+  /* MEDIUM — card, service and team headings. */
+  --fs-md: clamp(1.125rem, 1.02rem + 0.4vw, 1.375rem); /* 18 -> 22px */
+  /* SMALL — body, navigation, form fields. */
   --fs-sm: clamp(0.9375rem, 0.9rem + 0.16vw, 1rem); /* 15 -> 16px */
+  /* EXTRA SMALL — eyebrows, buttons, captions. */
+  --fs-xs: 0.8125rem; /* 13px */
 
-  /* EXTRA SMALL — eyebrows, button labels, captions, metadata. The original
-     sets buttons at 11px and eyebrows at 10.5px; 12px is the single value,
-     rounded upward so it stays readable on a phone. */
-  --fs-xs: 0.75rem; /* 12px */
+  /* Named aliases still used by the service pages. */
+  --fs-h1: var(--fs-title);
+  --fs-h2: var(--fs-lg);
+  --fs-h3: var(--fs-md);
+  --fs-body-lg: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
+  --fs-caption: var(--fs-xs);
+  --fs-button: var(--fs-xs);
+  --color-mist: var(--bs-ink-300);
 
-  /* Line height and letter spacing do the work extra sizes would. */
-  --lh-display: 1.08; /* the original's H1 */
-  --lh-heading: 1.14; /* the original's H2 */
-  --lh-sub: 1.25;
-  --lh-body: 1.75; /* the original's 16/28 body */
-  --lh-tight: 1.1;
+  --lh-display: 0.9;
+  --lh-heading: 1.04;
+  --lh-sub: 1.2;
+  --lh-body: 1.75;
+  --lh-tight: 1;
 
-  --ls-display: -0.02em;
-  --ls-heading: -0.018em;
-  --ls-sub: -0.01em;
+  --ls-display: 0.005em;
+  --ls-heading: 0.004em;
+  --ls-sub: 0.01em;
   --ls-body: 0;
-  --ls-caps: 0.18em; /* the original's uppercase button tracking */
-  --ls-caps-soft: 0.12em;
+  --ls-caps: 0.16em;
+  --ls-caps-soft: 0.2em;
 
   --fw-body: 400;
   --fw-medium: 500;
-  --fw-semibold: 600;
-  --fw-bold: 700;
+  --fw-semibold: 500; /* Oswald reads heavy; 500 is its "semibold" here */
+  --fw-bold: 600;
 
   /* ---------------------------------------------------------------------
-     Spacing. 4px base, plus the original's measured section rhythm.
+     Spacing
      --------------------------------------------------------------------- */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -158,19 +146,15 @@
   --space-8: 4rem;
   --space-9: 6rem;
   --space-10: 8rem;
-  /* The original pads every section 100px top and 80-120px bottom. */
-  --section-pad: clamp(3.5rem, 2.2rem + 4vw, 6.25rem); /* 56 -> 100px */
+  --section-pad: clamp(4.5rem, 2.6rem + 6vw, 8.5rem); /* 72 -> 136px */
 
-  /* Layout — the original's container is 1320px. */
   --container: 82.5rem;
   --gutter: clamp(1rem, 0.4rem + 2.6vw, 2.5rem);
   --header-h: 5rem;
   --header-h-compact: 4.25rem;
 
-  /* Shape: the original has no rounded corners anywhere. */
   --radius: 0px;
 
-  /* Buttons — measured from the original: 56px tall, 14/32 padding. */
   --btn-h: 3.5rem;
   --btn-h-sm: 2.75rem;
   --btn-pad-x: 2rem;
@@ -190,11 +174,11 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Dark sections. The original runs ink bands between its cream sections. This
-   is how a section opts into one: it re-maps the same semantic tokens, so
-   every component inside keeps working with no component-level change.
+   Dark sections re-map the same semantic tokens, so every component inside
+   keeps working with no component-level change.
    --------------------------------------------------------------------------- */
 .tone-dark,
+.site-header,
 .hero,
 .page-hero,
 .clients,
@@ -202,37 +186,35 @@
 .quote,
 .location,
 .site-footer,
-/* The /about charcoal bands. These carry glass tiles and an inverted
-   signature that were composed against ink, so they stay ink rather than
-   being recoloured onto cream. */
 .about-page__approach,
 .about-page__commitment,
 .about-page__leadership {
   --color-bg: var(--bs-ink);
-  --color-fg: var(--bs-cream); /* text-primary on charcoal, 16.9:1 */
+  --color-fg: var(--bs-ivory);
   --color-fg-strong: var(--bs-white);
-  --color-muted: var(--bs-ink-300); /* 9.3:1 on ink */
-  /* ink-500 is the spec's dark text-muted, but it measures 3.4:1 on ink and
-     3.1:1 on the footer's charcoal — under the 4.5:1 AA floor, and every use
-     of it is 12px. ink-300 at 80% keeps a distinct third level at ~6.3:1. */
-  --color-subtle: rgb(174 179 181 / 0.8);
-  --color-border: rgb(243 244 243 / 0.1);
-  --color-border-strong: rgb(243 244 243 / 0.4);
+  --color-muted: var(--bs-ink-300);
+  --color-subtle: rgb(162 156 145 / 0.85);
+  --color-border: rgb(250 248 243 / 0.1);
+  --color-border-strong: rgb(250 248 243 / 0.4);
   --color-surface: var(--bs-ink-800);
   --color-surface-raised: var(--bs-ink-soft);
-  --color-accent: var(--bs-gold-light); /* champagne-300, 9.8:1 on ink */
+  --color-accent: var(--bs-gold-light);
   --color-accent-strong: var(--bs-gold);
-  --color-rule: var(--bs-gold-light);
-  --color-hover: rgb(243 244 243 / 0.08);
-  --color-active: rgb(243 244 243 / 0.14);
+  --color-rule: var(--bs-gold);
+  --color-hover: rgb(250 248 243 / 0.08);
+  --color-active: rgb(250 248 243 / 0.14);
   --color-focus: var(--bs-gold-light);
-  /* Inside a dark band, "on light" means on the ink ground. */
-  --color-fg-on-light: var(--bs-cream);
+  --color-fg-on-light: var(--bs-ivory);
   --color-muted-on-light: var(--bs-ink-300);
-  --color-border-on-light: rgb(243 244 243 / 0.2);
+  --color-border-on-light: rgb(250 248 243 / 0.2);
   --color-bg-light: var(--bs-ink);
   background: var(--color-bg);
   color: var(--color-fg);
+}
+
+/* The header is transparent over the hero; it only borrows the dark tokens. */
+.site-header {
+  background: none;
 }
 
 @media (max-width: 1023px) {
@@ -241,97 +223,4 @@
     --header-h-compact: 3.625rem;
     --btn-h: 3.25rem;
   }
-}
-
-/* ===========================================================================
-   PROTECTED ROUTE FREEZE — /services and /services/:slug
-   ===========================================================================
-   The Service pages were signed off as they are and must not change. They
-   share Header, Footer, PageHero, SectionIntro, ServiceGrid, ServiceCard,
-   CTAButton, Accordion and PendingPanel with the rest of the site, and all of
-   those are token-driven — so the reconstruction above would have redesigned
-   them too.
-
-   App.jsx sets `data-legacy-theme` on <html> for those routes only, and this
-   block restores every token to its exact pre-task value. Nothing outside the
-   Service pages depends on it, so deleting this block and that attribute is
-   all it takes to bring them into the new system later.
-   =========================================================================== */
-html[data-legacy-theme] {
-  --black: #0a0b0c;
-  --graphite: #17191a;
-  --charcoal: #292c2e;
-  --steel: #62676a;
-  --silver: #aeb3b5;
-  --soft-white: #f3f4f3;
-  --white: #ffffff;
-  --champagne: #b99a63;
-  --champagne-light: #d0b37b;
-  --ink: var(--black);
-  --charcoal-900: var(--graphite);
-  --charcoal-800: var(--charcoal);
-  --mist: var(--silver);
-  --cream: var(--soft-white);
-  --ivory: var(--soft-white);
-  --gold-400: var(--champagne-light);
-  --gold-500: var(--champagne);
-  --gold-700: #8a7044;
-  --steel-light: #8a9093;
-
-  --color-bg: var(--black);
-  --color-fg: var(--soft-white);
-  --color-fg-strong: var(--white);
-  --color-muted: var(--silver);
-  --color-subtle: var(--steel-light);
-  --color-border: rgb(243 244 243 / 0.14);
-  --color-border-strong: rgb(243 244 243 / 0.38);
-  --color-surface: var(--graphite);
-  --color-surface-raised: var(--charcoal);
-  --color-overlay: rgb(10 11 12 / 0.88);
-  --color-accent: var(--champagne-light);
-  --color-accent-strong: var(--gold-700);
-  --color-accent-2: var(--champagne);
-  --color-hover: rgb(243 244 243 / 0.1);
-  --color-active: rgb(243 244 243 / 0.18);
-  --color-focus: var(--champagne-light);
-  --color-bg-light: var(--soft-white);
-  --color-fg-on-light: var(--black);
-  --color-muted-on-light: var(--steel);
-  --color-border-on-light: rgb(10 11 12 / 0.14);
-
-  --font-display: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-sans: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
-
-  --fs-display: clamp(3rem, 1.9rem + 4.4vw, 5.75rem);
-  --fs-hero: clamp(2.125rem, 1.25rem + 3.4vw, 4.25rem);
-  --fs-h1: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
-  --fs-h2: clamp(1.875rem, 1.4rem + 1.9vw, 3rem);
-  --fs-h3: clamp(1.25rem, 1.12rem + 0.55vw, 1.5rem);
-  --fs-body-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
-  --fs-body: 1rem;
-  --fs-label: 0.8125rem;
-  --fs-button: 0.9375rem;
-  --fs-caption: 0.8125rem;
-  --fs-lg: var(--fs-h2);
-  --fs-sm: 1rem;
-  --fs-xs: 0.8125rem;
-
-  --lh-tight: 1.04;
-  --lh-heading: 1.12;
-  --lh-body: 1.6;
-  --lh-display: 1.04;
-  --lh-sub: 1.3;
-  --ls-display: -0.022em;
-  --ls-heading: -0.012em;
-  --ls-sub: -0.005em;
-  --ls-caps: 0.03em;
-  --ls-caps-soft: 0.03em;
-
-  --section-pad: clamp(4.5rem, 3rem + 6vw, 9rem);
-  --container: 80rem;
-  --header-h-compact: 4rem;
-  --radius: 2px;
-  --btn-h: auto;
-  --btn-h-sm: auto;
-  --btn-pad-x: 1.5rem;
 }

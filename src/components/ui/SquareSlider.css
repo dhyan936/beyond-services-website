@@ -166,7 +166,7 @@
 .sq-slider--light .sq-slider__ctrl:hover:not(:disabled) {
   color: var(--gold-700);
   border-color: var(--gold-700);
-  background: rgb(10 11 12 / 0.04);
+  background: rgb(14 13 11 / 0.04);
 }
 
 @media (max-width: 639px) {

@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-synthesis: none;
   overflow-x: clip;
 }
 
@@ -88,19 +89,23 @@ button {
 }
 
 /* ---------------------------------------------------------------------------
-   Type scale - three sizes, two families.
+   Type scale — three families, each with one job.
 
-   .t-display / .t-hero / .t-h1 / .t-h2 all resolve to the SAME size
-   (--fs-lg). They survive as separate class names only so existing markup
-   keeps working; they no longer differ in size, which is the entire point.
-   What separates a hero from a section heading is position and surrounding
-   space, not scale.
-
-   Anything that used to be a fourth or fifth size is now --fs-sm or --fs-xs
-   with a different weight.
+   Bebas Neue (--font-impact) only ever appears big: the hero and page titles.
+   Oswald (--font-display) carries structure: every heading, eyebrow and
+   button, set in capitals. Poppins (--font-sans) carries every sentence.
    --------------------------------------------------------------------------- */
 .t-display,
-.t-hero,
+.t-hero {
+  font-family: var(--font-impact);
+  font-size: var(--fs-display);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
 .t-h1,
 .t-h2 {
   font-family: var(--font-display);
@@ -108,25 +113,17 @@ button {
   font-weight: var(--fw-semibold);
   line-height: var(--lh-heading);
   letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
-/* The hero headline is the same size, set a shade tighter - exactly the
-   relationship the original's H1 has to its H2. */
-.t-display,
-.t-hero {
-  line-height: var(--lh-display);
-  letter-spacing: var(--ls-display);
-}
-
-/* Subsection, card, service and team headings: the serif at body size, with
-   weight carrying the hierarchy instead of a new size. */
 .t-h3 {
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
   line-height: var(--lh-sub);
   letter-spacing: var(--ls-sub);
+  text-transform: uppercase;
 }
 
 .t-body-lg,
@@ -139,24 +136,25 @@ button {
   text-wrap: pretty;
 }
 
-/* A lead paragraph is the same size, set a touch looser. */
 .t-body-lg {
+  font-size: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
   line-height: 1.7;
 }
 
-/* Eyebrows and section identifiers: the original's uppercase gold label. */
+/* Eyebrows: Oswald caps, gold, led by a short rule. */
 .t-label {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-medium);
   line-height: 1.5;
   letter-spacing: var(--ls-caps-soft);
+  text-transform: uppercase;
 }
 
 .t-button {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-size: var(--fs-xs);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   line-height: 1;
   letter-spacing: var(--ls-caps);
   text-transform: uppercase;
@@ -241,102 +239,4 @@ button {
     transition-duration: 1ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* ===========================================================================
-   PROTECTED ROUTE FREEZE — the global type classes
-   ===========================================================================
-   tokens.css freezes the token VALUES for /services and /services/:slug, but
-   the .t-* classes above also changed shape: .t-h3 moved from the sans face at
-   weight 500 to the display face at weight 700, and several line heights moved
-   with it. Those are rules, not tokens, so they need restoring here too —
-   without this the protected pages reflow by a dozen pixels.
-   =========================================================================== */
-
-html[data-legacy-theme] {
-  color-scheme: dark;
-}
-
-html[data-legacy-theme] .t-display,
-html[data-legacy-theme] .t-hero,
-html[data-legacy-theme] .t-h1,
-html[data-legacy-theme] .t-h2 {
-  font-family: var(--font-display);
-  font-weight: 450;
-  font-optical-sizing: auto;
-  text-wrap: balance;
-}
-
-html[data-legacy-theme] .t-display {
-  font-size: var(--fs-display);
-  line-height: 1;
-  letter-spacing: -0.022em;
-}
-
-html[data-legacy-theme] .t-hero {
-  font-size: var(--fs-hero);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.018em;
-}
-
-html[data-legacy-theme] .t-h1 {
-  font-size: var(--fs-h1);
-  line-height: 1.06;
-  letter-spacing: -0.016em;
-}
-
-html[data-legacy-theme] .t-h2 {
-  font-size: var(--fs-h2);
-  line-height: var(--lh-heading);
-  letter-spacing: -0.012em;
-}
-
-html[data-legacy-theme] .t-h3 {
-  font-family: var(--font-sans);
-  font-size: var(--fs-h3);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.005em;
-}
-
-html[data-legacy-theme] .t-body-lg {
-  font-family: var(--font-sans);
-  font-size: var(--fs-body-lg);
-  font-weight: 400;
-  line-height: 1.55;
-  letter-spacing: 0;
-}
-
-html[data-legacy-theme] .t-body {
-  font-family: var(--font-sans);
-  font-size: var(--fs-body);
-  font-weight: 400;
-  line-height: var(--lh-body);
-  letter-spacing: 0;
-}
-
-html[data-legacy-theme] .t-label {
-  font-family: var(--font-sans);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: 0.03em;
-}
-
-html[data-legacy-theme] .t-button {
-  font-family: var(--font-sans);
-  font-size: var(--fs-button);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  text-transform: none;
-}
-
-html[data-legacy-theme] .t-caption {
-  font-family: var(--font-sans);
-  font-size: var(--fs-caption);
-  font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: 0;
-  color: var(--color-subtle);
 }

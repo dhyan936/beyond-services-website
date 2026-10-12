@@ -32,10 +32,11 @@
 
 .lets-talk__heading {
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   color: var(--color-fg-strong);
   text-wrap: balance;
 }

@@ -52,10 +52,10 @@
   z-index: 1;
   background: linear-gradient(
     0deg,
-    rgb(10 11 12 / 0.92) 0%,
-    rgb(10 11 12 / 0.72) 30%,
-    rgb(10 11 12 / 0.26) 56%,
-    rgb(10 11 12 / 0) 82%
+    rgb(14 13 11 / 0.92) 0%,
+    rgb(14 13 11 / 0.72) 30%,
+    rgb(14 13 11 / 0.26) 56%,
+    rgb(14 13 11 / 0) 82%
   );
   transition: opacity var(--dur-base) var(--ease-out);
 }
@@ -81,10 +81,11 @@
 
 .svc-card__name {
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  font-size: var(--fs-md);
   font-weight: var(--fw-bold);
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   text-wrap: balance;
   transition: transform var(--dur-base) var(--ease-out);
 }
@@ -124,7 +125,7 @@
 /* --- Typography-led plate (photograph withheld) --------------------------- */
 
 .svc-card--plate {
-  background: var(--bs-cream);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   box-shadow: none;
 }
@@ -132,15 +133,15 @@
 /* Without a photograph there is no scrim to sit on, so the plate card uses the
    original's card colours rather than the photo card's reversed-out text. */
 .svc-card--plate .svc-card__body {
-  color: var(--bs-ink);
+  color: var(--color-fg);
 }
 
 .svc-card--plate .svc-card__name {
-  color: var(--bs-ink);
+  color: var(--color-fg-strong);
 }
 
 .svc-card--plate .svc-card__cue {
-  color: var(--bs-body);
+  color: var(--color-muted);
 }
 
 .svc-card--plate .svc-card__ghost {
@@ -159,11 +160,10 @@
   right: -0.05em;
   top: -0.22em;
   z-index: 0;
-  font-family: var(--font-display);
-  /* Decoration, not text: derived from the LARGE token so it still belongs to
-     the three-size system rather than introducing a size of its own. */
-  font-size: calc(var(--fs-lg) * 2.4);
-  font-weight: var(--fw-semibold);
+  /* Decoration, not text: an oversized Bebas numeral. */
+  font-family: var(--font-impact);
+  font-size: calc(var(--fs-lg) * 2.6);
+  font-weight: 400;
   line-height: 1;
   color: var(--soft-white);
   opacity: 0.04;
@@ -174,7 +174,7 @@
 .svc-card--plate:hover,
 .svc-card--plate:focus-visible {
   border-color: var(--bs-gold);
-  background: var(--bs-cream-deep);
+  background: var(--color-surface-raised);
 }
 
 /* --- Hover / keyboard focus ----------------------------------------------- */
@@ -227,66 +227,4 @@
   .svc-card__scrim {
     transition: none;
   }
-}
-
-/* --- Protected Service pages -------------------------------------------
-   This stylesheet is shared with /services and /services/:slug, which are
-   signed off and must not change. The rules above moved to the three-size
-   system; these restore their exact previous values on those routes only.
-   See tokens.css and App.jsx for how the freeze is switched on. */
-
-html[data-legacy-theme] .svc-card__num {
-  font-size: 0.72rem;
-}
-
-html[data-legacy-theme] .svc-card__name {
-  font-size: clamp(1.25rem, 1.08rem + 0.6vw, 1.75rem);
-}
-
-html[data-legacy-theme] .svc-card__text {
-  font-size: 0.8125rem;
-}
-
-html[data-legacy-theme] .svc-card__ghost {
-  font-size: clamp(6rem, 4rem + 8vw, 9rem);
-}
-
-/* The display face changed, so its heading weight did too; these hold the
-   protected Service pages at the weight they were signed off with. */
-
-html[data-legacy-theme] .svc-card__ghost {
-  font-weight: 450;
-}
-
-/* The plate card's colours and the card heading's weight also changed with the
-   reconstruction, so the protected Service pages get their originals back. */
-
-html[data-legacy-theme] .svc-card__name {
-  font-weight: 500;
-}
-
-html[data-legacy-theme] .svc-card--plate {
-  background: var(--color-surface);
-  border-color: var(--color-border);
-  box-shadow: inset 0 1px 0 0 rgb(208 179 123 / 0.26);
-}
-
-html[data-legacy-theme] .svc-card--plate:hover,
-html[data-legacy-theme] .svc-card--plate:focus-visible {
-  border-color: var(--color-border-strong);
-  background: var(--color-surface-raised);
-}
-
-html[data-legacy-theme] .svc-card--plate .svc-card__body,
-html[data-legacy-theme] .svc-card--plate .svc-card__name {
-  color: var(--white);
-}
-
-html[data-legacy-theme] .svc-card--plate .svc-card__cue {
-  color: var(--soft-white);
-}
-
-html[data-legacy-theme] .svc-card--plate .svc-card__ghost {
-  color: var(--soft-white);
-  opacity: 0.04;
 }

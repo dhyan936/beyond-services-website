@@ -32,10 +32,10 @@
 
 .accordion__q {
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
   font-weight: var(--fw-semibold);
   line-height: 1.3;
-  letter-spacing: -0.008em;
+  letter-spacing: 0.01em;
   text-wrap: pretty;
 }
 
@@ -102,17 +102,4 @@
   .accordion__a {
     padding-right: 0;
   }
-}
-
-/* The display face changed, so its heading weight did too; these hold the
-   protected Service pages at the weight they were signed off with. */
-
-html[data-legacy-theme] .accordion__q {
-  font-weight: 450;
-}
-
-/* Size tokens for the protected Service pages (see tokens.css). */
-
-html[data-legacy-theme] .accordion__q {
-  font-size: var(--fs-h3);
 }

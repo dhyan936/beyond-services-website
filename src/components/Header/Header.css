@@ -17,7 +17,7 @@
   position: absolute;
   inset: 0;
   /* Dense enough that ivory sections never read through the bar. */
-  background: rgb(14 16 18 / 0.98);
+  background: rgb(14 13 11 / 0.94);
   backdrop-filter: blur(14px) saturate(1.1);
   -webkit-backdrop-filter: blur(14px) saturate(1.1);
   border-bottom: 1px solid var(--color-border);
@@ -164,11 +164,18 @@ a.site-header__top-item:hover {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  font-size: var(--fs-xs);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-fg-strong);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.site-header__link:hover,
+.site-header__link[aria-current='page'] {
+  color: var(--color-accent);
 }
 
 .site-header__link::after {
@@ -192,9 +199,7 @@ a.site-header__top-item:hover {
 
 /* CTA labels in the header read as the small uppercase level, like the nav. */
 .site-header .cta {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
+  letter-spacing: 0.14em;
 }
 
 .site-header__actions {
@@ -387,39 +392,4 @@ a.mobile-menu__contact-item:hover {
   color: var(--color-fg-strong);
   border-color: var(--ivory);
   transform: translateY(-2px);
-}
-
-/* --- Protected Service pages -------------------------------------------
-   This stylesheet is shared with /services and /services/:slug, which are
-   signed off and must not change. The rules above moved to the three-size
-   system; these restore their exact previous values on those routes only.
-   See tokens.css and App.jsx for how the freeze is switched on. */
-
-html[data-legacy-theme] .site-header__top-item {
-  font-size: 0.75rem;
-}
-
-html[data-legacy-theme] .site-header__link {
-  font-size: 0.75rem;
-}
-
-html[data-legacy-theme] .mobile-menu__link {
-  font-size: clamp(1.75rem, 1.3rem + 2.4vw, 2.5rem);
-}
-
-html[data-legacy-theme] .mobile-menu__contact-item {
-  font-size: 0.9375rem;
-}
-
-/* The header's own CTA treatment, re-asserted for the protected routes.
-
-   `html[data-legacy-theme] .cta` in CTAButton.css resets text-transform,
-   weight and tracking back to the pre-reconstruction button. At (0,2,1) it
-   outranked `.site-header .cta` at (0,2,0), which silently stripped the
-   uppercase GET A QUOTE label on /services. This rule sits at (0,3,1) so the
-   header keeps its own treatment on every route, frozen or not. */
-html[data-legacy-theme] .site-header .cta {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
 }

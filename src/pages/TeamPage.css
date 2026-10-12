@@ -6,6 +6,7 @@
 
 .team-page__heading {
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
   line-height: var(--lh-heading);
@@ -57,7 +58,8 @@
 
 .team-page__name {
   font-family: var(--font-display);
-  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  font-size: var(--fs-md);
   font-weight: var(--fw-bold);
   line-height: var(--lh-sub);
   letter-spacing: var(--ls-sub);
@@ -94,6 +96,7 @@
 .team-page__cta-heading {
   max-width: 22ch;
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
   line-height: var(--lh-heading);

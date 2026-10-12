@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { MotionConfig } from 'motion/react'
 import { usePath } from './router/router'
 import { LINKS, ROUTES } from './content/site'
@@ -43,37 +42,12 @@ const SERVICE_ROUTES = Object.fromEntries(SERVICE_DETAILS.map((s) => [s.href, s]
 // The four project routes share the "coming soon" view, resolved the same way.
 const PROJECT_ROUTES = Object.fromEntries(PROJECTS.items.map((p) => [p.href, p]))
 
-/**
- * The Service pages are signed off and must look exactly as they did before
- * the site was rebuilt against the original Beyond Service design system.
- *
- * They share Header, Footer, PageHero, SectionIntro, ServiceGrid, ServiceCard,
- * CTAButton, Accordion and PendingPanel with every other page, and all of
- * those read their colours, fonts, sizes and radii from tokens — so changing
- * the tokens would have restyled the Service pages too.
- *
- * Instead of forking those nine components, the whole document switches token
- * sets per route: `data-legacy-theme` on <html> restores the previous values
- * (see the freeze block at the foot of tokens.css). Nothing else depends on
- * it, so removing this and that block is all it takes to fold the Service
- * pages into the new system later.
- */
-function isProtectedRoute(path) {
-  return path === LINKS.services || path.startsWith(LINKS.services + '/')
-}
-
 export default function App() {
   const path = usePath()
   const Page = PAGES[path]
   const service = SERVICE_ROUTES[path]
   const project = PROJECT_ROUTES[path]
   const route = ROUTES.find((r) => r.path === path)
-
-  useEffect(() => {
-    const root = document.documentElement
-    if (isProtectedRoute(path)) root.setAttribute('data-legacy-theme', '')
-    else root.removeAttribute('data-legacy-theme')
-  }, [path])
 
   return (
     <MotionConfig reducedMotion="user">

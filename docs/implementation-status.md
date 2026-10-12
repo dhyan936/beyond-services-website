@@ -1,8 +1,17 @@
 # Beyond Service — implementation status
 
-Updated 2026-10-12. Direction: **Hybrid C**. Nothing has been deployed.
+Updated 2026-10-12. Direction: **Ink & Gold v2**. Nothing has been deployed.
 
 ---
+
+## 0. Ink & Gold v2 restyle (2026-10-12)
+
+- **Palette** now matches the live site's own stylesheet: ink `#0E0D0B`, ivory `#FAF8F3`, cream `#F3EFE6`, gold `#B8973A` / `#D4AF5A` / `#E8D89A`. Accent text on light grounds uses the darkened gold `#7A5F1C` (5.7:1).
+- **Type**: Bebas Neue (hero, page titles, numerals, ticker, footer wordmark), Oswald (headings, eyebrows, nav, buttons), Poppins (body). Cormorant Garamond, DM Sans, Source Serif 4 and IBM Plex Sans removed.
+- **The `/services` freeze is lifted.** `data-legacy-theme` and every rule keyed to it are gone, so the service pages share the one system. Section 4 below records the pre-v2 baseline and is now historical.
+- **New**: `ServiceTicker` band under the hero, outline wordmark in the footer, sweep-fill button hovers. Home Services and Projects sections now sit on ink.
+- **Fixed**: header nav links were ink-on-ink over the hero (the header did not take the dark tokens).
+
 
 ## 1. Completed pages and routes
 

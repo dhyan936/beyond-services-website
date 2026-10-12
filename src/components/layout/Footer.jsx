@@ -93,6 +93,11 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* The name set full-bleed in outline caps: a sign-off, not content. */}
+      <div className="container site-footer__mark" aria-hidden="true">
+        Beyond Service
+      </div>
+
       <div className="container site-footer__base">
         <p className="site-footer__legal t-caption">{FOOTER.legal}</p>
 
